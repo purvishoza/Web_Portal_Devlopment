@@ -11,6 +11,10 @@ import AddUsers from './AddUsers';
 import Table from './TableData';
 import SecondTable from './SecondTable';
 
+import Home from './Home';
+import Login from './Login/Login';
+
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
 class App extends Component {
@@ -71,14 +75,21 @@ class App extends Component {
 // }
     return (
       <div >
-      <Header />
-      
+      <BrowserRouter>
+            <div className="App">
+              <Header />
+              <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/login' component={Login} />
+              </Switch>
+            </div>
+            </BrowserRouter>
   { /*    {posts}
     <AddUsers />
         <Table />
-      */}
 
-    <SecondTable />
+
+    <SecondTable /> */}
       </div>
     );
   }

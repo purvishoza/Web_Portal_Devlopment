@@ -88,14 +88,13 @@ text-align: center;
   margin-left: 900px;
 }
 .Logo{
-  max-height: 50px;
-  width: 300px;
+  max-height: -30px;
+  width: 200px;
   background-color: #0078b3;
-  margin: -60px 900px 800px 0px;
+  margin: -60px 600px 800px 0px;
 
 }
 .Modal{
-
   padding: 10px;
   columns: 3;
   -webkit-columns: 4;
@@ -103,6 +102,7 @@ text-align: center;
   line-height: inherit;
   color: #0078b3;
   font-size:1em;
+  align-items: center;
 }
 
 .App-start{
