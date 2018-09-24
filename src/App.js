@@ -72,14 +72,13 @@ class App extends Component {
     return (
       <div >
       <Header />
-      <a href = '#' onClick = {this.showHandler} className='Link'>Change Facility</a>
-      <h3 className = 'App-title'> Choose a facility</h3>
+      
   { /*    {posts}
     <AddUsers />
         <Table />
       */}
-      <Table />
-    
+
+    <SecondTable />
       </div>
     );
   }

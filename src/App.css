@@ -75,7 +75,7 @@ text-align: center;
 .Link
 {
   text-decoration: none;
-  color: white;
+
   text-align: right;
   font-size: 18px;
   margin-left: 680px;
@@ -96,11 +96,13 @@ text-align: center;
 }
 .Modal{
 
-   padding: 20px;
-   columns: 4;
-   -webkit-columns: 4;
-   -moz-columns:3 ;
-   color: #0078b3;
+  padding: 10px;
+  columns: 3;
+  -webkit-columns: 4;
+  -moz-columns:3;
+  line-height: inherit;
+  color: #0078b3;
+  font-size:1em;
 }
 
 .App-start{
