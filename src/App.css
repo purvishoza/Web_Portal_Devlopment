@@ -1,5 +1,8 @@
+@import '~antd/dist/antd.css';
 .App {
-
+text-align: center;
+  border: 1px solid #eee;
+    padding: 20px;
 }
 
 .App-logo {
@@ -8,25 +11,130 @@
 }
 
 .App-header {
-  background-color: #1C86EE;
-  height: 30px;
+  background-color: #0078b3;
+  height: 80px;
+  text-align:center;
+
+  font-size: 18px;
+  font-style: normal;
   padding: 20px;
   color: white;
+}
+.color{
+  color: green;
+}
+.material-icons{
+  float: right;
+  margin-top: -40px;
+color: #0078b3;
+
+}
+.modalshow{
+  position: relative;
+   top: 100px;
+   left: 400px;
+   right: 20px;
+   bottom: 20px;
+   color: #0078b3;
+   background-color: white;
+   width:500px;
+   border: 1px solid #000;
+   border-radius: 4px;
+  font-size: medium;
+  align-content: left;
+  padding: 20px;
+  text-align: left;
+  float: left;
+}
+.modalheader{
+margin-left: 400px;
+}
+.modaltitle{
+text-align: center;
+
+}
+.modalbody{
+text-align: center;
+
+}
+.textarea{
+  width:500px;
+  height:100px;
+  text-align: left;
+  padding-bottom: 30px;
+  font-size: 12px;
+  margin-bottom: 40px;
+
 }
 
 .App-title {
   font-size: 1.5em;
+  color: #0078b3;
+  text-align: center;
+}
+.Link
+{
+  text-decoration: none;
+  color: white;
+  text-align: right;
+  font-size: 18px;
+  margin-left: 680px;
+  margin-top: 440px;
+
+}
+.Logout
+{
+  text-decoration: none;
+  margin-left: 900px;
+}
+.Logo{
+  max-height: 50px;
+  width: 300px;
+  background-color: #0078b3;
+  margin: -60px 900px 800px 0px;
+
+}
+.Modal{
+
+   padding: 20px;
+   columns: 4;
+   -webkit-columns: 4;
+   -moz-columns:3 ;
+   color: #0078b3;
 }
 
-.App-intro {
-  font-size: large;
+.App-start{
+  text-align: center;
+  color: #1C86EE;
   display:block;
   border: 1px solid #eee;
-  margin: 10px 0 0 500px;
-  box-shadow: 0 2px 2px #ccc;
-  width: 200px;
   padding: 20px;
-  align-self: center;
+  margin: 10px 0 0 350px;
+  box-shadow: 0 2px 2px #ccc;
+  width: 500px;
+  height: 100px;
+}
+.App-intro {
+  position: relative;
+   top: 100px;
+   left: 400px;
+   right: 20px;
+   bottom: 20px;
+   color: #0078b3;
+   background-color: white;
+   width:500px;
+   border: 1px solid #000;
+   border-radius: 4px;
+  font-size: medium;
+  align-content: left;
+  padding: 20px;
+  text-align: left;
+  float: left;
+
+}
+.colors{
+  color: black;
+  margin-top: 20px;
 }
 
 @keyframes App-logo-spin {
