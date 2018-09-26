@@ -89,20 +89,6 @@ class SecondTable extends Component {
       visible:false
     })
   }
-
-
-//  selectRow = (record) => {
-  //   const selectedRowKeys = [...this.state.selectedRowKeys];
-  //   if (selectedRowKeys.indexOf(record.key) >= 0) {
-  //     selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
-  //   } else {
-  //     selectedRowKeys.push(record.key);
-  //   }
-  //   this.setState({ selectedRowKeys });
-  // }
-  // onSelectedRowKeysChange = (selectedRowKeys) => {
-  //   this.setState({ selectedRowKeys });
-  // }
   render() {
     return (
 <div>
@@ -112,7 +98,6 @@ class SecondTable extends Component {
 <div className = 'align1'>{this.state.city}</div>
 <FacilityModal visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.handleCancel} />
       <Table
-    //rowSelection={rowSelection}
         columns={columns}
         dataSource={this.state.data}
       rowKey={this.props.match.params.city_id}

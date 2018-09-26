@@ -1,20 +1,13 @@
 import { Modal} from 'antd';
 import React, { Component } from 'react';
 import {Input} from 'antd';
-
 const { TextArea } = Input;
 
-
-
 class AddUsers extends Component {
-
-
   state = {
     id: null,
     name: null,
    }
-
-
 
   handleAddUser = (e) => {
     e.preventDefault();

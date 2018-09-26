@@ -1,12 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Layout,Menu } from 'antd';
-//import logo from '../../kp_logo.jpeg';
 
-//const { Header} = Layout;
 const header = () => {
   return(
-    <Layout >
+    <Layout>
     <div>
       <Menu
         mode="horizontal"
