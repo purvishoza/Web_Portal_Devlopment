@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import logo from './kp_logo.jpeg';
-import Person from './Person/Person';
-import Users from './Users/Users';
-import Header from './Header/Header';
-import axios from 'axios';
-import Modal from 'react-modal';
-import {Link} from 'react-router-dom';
-import AddUsers from './AddUsers';
-import Table from './TableData';
-import SecondTable from './SecondTable';
+import Header from './Components/Header/Header';
+import SecondTable from './Components/Table/SecondTable';
 
-import Home from './Home';
-import Login from './Login/Login';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -29,24 +21,7 @@ class App extends Component {
 //   );
 // }
 
-  // state = {
-  //   cities: [
-  //       {name : "Antioch"},
-  //       {name : "Fremont"},
-  //       {name : "Fresno"},
-  //       {name : "Manteca"},
-  //       {name : "Modesto"},
-  //       {name : "Oakland"},
-  //       {name : "Redwood City"},
-  //       {name : "Santa Clara"},
-  //       {name : "Richmond"},
-  //       {name : "Sacramento"},
-  //       {name : "Wallnut Creek"},
-  //       {name : "Vallejo"}
-  //   ],
-  //   showData: false,
-  //   modalShow:false
-  // }
+
    showHandler = () =>
    {
      const doesShow = this.state.showData;
@@ -78,18 +53,13 @@ class App extends Component {
       <BrowserRouter>
             <div className="App">
               <Header />
-              <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/login' component={Login} />
-              </Switch>
+                  <Switch>
+                    <Route exact path='/' component={Home} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/:city_id' component={SecondTable} />
+                  </Switch>
             </div>
             </BrowserRouter>
-  { /*    {posts}
-    <AddUsers />
-        <Table />
-
-
-    <SecondTable /> */}
       </div>
     );
   }

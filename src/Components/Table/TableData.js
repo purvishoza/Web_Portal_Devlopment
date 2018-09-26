@@ -1,47 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './index.css';
 import { Table } from 'antd';
-import {Link} from 'react-router-dom';
-import { Button } from 'antd';
-import { Switch, Icon } from 'antd';
-import {BrowserRouter} from 'react-router-dom';
-import FacilityModal from './FacilityModal';
+import { Modal,Button } from 'antd';
+import AddUser from '../Users/AddUsers';
+import {Input} from 'antd';
+const { TextArea } = Input;
 
-const columns = [ {
-  title: 'Insight Name',
+const columns = [{
+  title: 'NUID',
+  dataIndex: 'id',
+   render: text => <a href="#">{text}</a>
+}, {
+  title: 'Name',
   dataIndex: 'name',
 }, {
-  title: 'Threshold value',
-  dataIndex: 'threshold',
+  title: 'Email',
+  dataIndex: 'email',
 },
 {
-  title: 'Enable/Disable',
-  render: text => <Switch checkedChildren="On" unCheckedChildren="Off" onClick = {this.handleClick}   defaultunChecked />,
-  dataIndex: 'visibility',
+  title: 'Date Added',
+  dataIndex: 'date',
+},
+{
+  title: 'Action',
+  dataIndex: 'action',
 }
 ];
 
-const data = [{
-  id: '1',
-  name: 'John Brown',
-
-}, {
-  id: '2',
-  name: 'Jim Green',
-
-}, {
-  id: '3',
-  name: 'Joe Black',
-
-}, {
-  id: '4',
-  name: 'Disabled User',
-
-}];
-
-class SecondTable extends React.Component {
+class TableData extends React.Component {
   state = {
     data : [{
       id: '1',
@@ -118,14 +105,15 @@ class SecondTable extends React.Component {
     }; */ }
     return (
 <div>
-<a href = '#'onClick={this.showModal}>
-  Change Facility
-</a>
-<FacilityModal visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.addUser} />
+<Button type="primary" onClick={this.showModal}>
+  Add user
+</Button>
+<AddUser visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.addUser} />
       <Table
     //rowSelection={rowSelection}
         columns={columns}
         dataSource={this.state.data}
+        rowKey="uid"
 
       />
       </div>
@@ -133,4 +121,4 @@ class SecondTable extends React.Component {
   }
 }
 
-export default SecondTable
+export default TableData

@@ -1,35 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react';
 import 'antd/dist/antd.css';
-import './index.css';
 import { Table } from 'antd';
-import { Modal,Button } from 'antd';
-import AddUser from './AddUsers';
-import {Input} from 'antd';
-const { TextArea } = Input;
+import axios from 'axios';
+import {Switch } from 'antd';
+import FacilityModal from './FacilityModal';
 
-const columns = [{
-  title: 'NUID',
-  dataIndex: 'id',
-   render: text => <a href="#">{text}</a>
-}, {
-  title: 'Name',
+const columns = [ {
+  title: 'Insight Name',
   dataIndex: 'name',
 }, {
-  title: 'Email',
-  dataIndex: 'email',
+  title: 'Threshold value',
+  dataIndex: 'threshold',
 },
 {
-  title: 'Date Added',
-  dataIndex: 'date',
-},
-{
-  title: 'Action',
-  dataIndex: 'action',
+  title: 'Enable/Disable',
+  render: text => <Switch checkedChildren="On" uncheckedchildren="Off" onClick = {this.handleClick}   defaultunchecked = "true" />,
+  dataIndex: 'visibility',
 }
 ];
 
-class TableData extends React.Component {
+
+
+class SecondTable extends Component {
   state = {
     data : [{
       id: '1',
@@ -53,7 +45,19 @@ class TableData extends React.Component {
       date: 'Sidney No. 1 Lake Park',
     }],
     selectedRowKeys: [],
-    visible: false
+    visible: false,
+    city:null
+  }
+
+  async componentDidMount()
+  {
+    console.log(this.props)
+    let id = this.props.match.params.city_id
+  await  axios.get('http://100.124.69.3:8080/api/v1/cities/' + id).then(res => {
+      this.setState({city:res.data.name})
+      console.log(res)
+    });
+  console.log(this.state.city)
   }
 
   showModal = () => {
@@ -86,6 +90,7 @@ class TableData extends React.Component {
     })
   }
 
+
 //  selectRow = (record) => {
   //   const selectedRowKeys = [...this.state.selectedRowKeys];
   //   if (selectedRowKeys.indexOf(record.key) >= 0) {
@@ -99,26 +104,22 @@ class TableData extends React.Component {
   //   this.setState({ selectedRowKeys });
   // }
   render() {
-  {/*  const { selectedRowKeys } = this.state;
-    const rowSelection = {
-      selectedRowKeys,
-      onChange: this.onSelectedRowKeysChange,
-    }; */ }
     return (
 <div>
-<Button type="primary" onClick={this.showModal}>
-  Add user
-</Button>
-<AddUser visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.addUser} />
+<a className = 'Link' onClick = {this.showModal}>
+  Change Facility
+</a>
+<div className = 'align1'>{this.state.city}</div>
+<FacilityModal visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.handleCancel} />
       <Table
     //rowSelection={rowSelection}
         columns={columns}
         dataSource={this.state.data}
-
+      rowKey={this.props.match.params.city_id}
       />
       </div>
     );
   }
 }
 
-export default TableData
+export default SecondTable

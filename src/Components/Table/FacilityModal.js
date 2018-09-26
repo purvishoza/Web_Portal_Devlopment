@@ -1,27 +1,21 @@
-import { Modal, Button } from 'antd';
+import { Modal} from 'antd';
 import React, { Component } from 'react';
-import { Menu, Dropdown, Icon } from 'antd';
-import Person from './Person/Person';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class FacilityModal extends Component {
   state = {
-     cities: [
-         {name : "Antioch"},
-         {name : "Fremont"},
-         {name : "Fresno"},
-         {name : "Manteca"},
-         {name : "Modesto"},
-         {name : "Oakland"},
-         {name : "Redwood City"},
-         {name : "Santa Clara"},
-         {name : "Richmond"},
-         {name : "Sacramento"},
-         {name : "Wallnut Creek"},
-         {name : "Vallejo"}
-     ]
-   }
+    cities:[]
+  }
 
-
+  async  componentDidMount()
+  {
+    await axios.get('http://100.124.69.3:8080/api/v1/cities').then(res => {
+      this.setState({cities:res.data})
+      console.log(res)
+    });
+    console.log(this.state.cities)
+  }
 
   handleAddUser = (e) => {
     e.preventDefault();
@@ -38,16 +32,13 @@ class FacilityModal extends Component {
     })
   }
 
-
   render() {
-
        let posts = (
-
          <div >All Facilities (NCAL)
                <div className = 'Modal'>
-                   {this.state.cities.map(post =>
+                   {this.state.cities.map(city =>
                        {
-                         return <Person name = {post.name}/>
+                         return <Link to = '#' key = {city.id}> {city.name} </Link>
                        })}
                </div>
                </div>
@@ -57,11 +48,11 @@ class FacilityModal extends Component {
     return (
 
       <div>
-
         <Modal
           title="Change Facility"
           visible={this.props.visible}
           onCancel={this.props.onCancel}
+          onOk = {this.props.onSubmit}
         >
         <div>{posts}</div>
         </Modal>

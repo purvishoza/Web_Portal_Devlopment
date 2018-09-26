@@ -1,8 +1,6 @@
-import { Modal, Button } from 'antd';
+import { Modal} from 'antd';
 import React, { Component } from 'react';
 import {Input} from 'antd';
-import { Menu, Dropdown, Icon } from 'antd';
-import PropTypes from 'prop-types';
 
 const { TextArea } = Input;
 
