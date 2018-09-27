@@ -53,7 +53,7 @@ class SecondTable extends Component {
   {
     console.log(this.props)
     let id = this.props.match.params.city_id
-  await  axios.get('http://100.124.69.3:8080/api/v1/cities/' + id).then(res => {
+  await  axios.get('http://100.124.66.66:8080/api/v1/cities/' + id).then(res => {
       this.setState({city:res.data.name})
       console.log(res)
     });

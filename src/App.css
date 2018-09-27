@@ -11,17 +11,19 @@ text-align: center;
 }
 
 .App-header {
-  background-color: #0078b3;
+  background-color: #006BA6;
   height: 80px;
+  margin-bottom: auto;
   text-align:center;
-
   font-size: 18px;
   font-style: normal;
   padding: 20px;
   color: white;
 }
-.color{
-  color: green;
+.Color{
+  color: white;
+  font-family: "Gotham 4r",Verdana;
+  font-size: 18px;
 }
 .material-icons{
   float: right;
@@ -88,8 +90,12 @@ text-align: center;
   margin-left: 900px;
 }
 .Logo{
-  height: 30px;
-  margin-left: 20px;
+  height: 95px;
+  width: 380px;
+  margin-left: -20px;
+  margin-bottom: -10px;
+  margin-top: -30px;
+
 
 }
 .Modal{
@@ -120,20 +126,44 @@ line-height: normal;
 }
 
 .align{
-  font-family: Gotham\ 4r,Verdana;
+  font-family: sans-serif;
   color: black;
   height: 210px;
   width: 600px;
   margin-left: 380px;
 margin-top: 30px;
+font-size: 18px;
 border: 1px solid #000;
 
 }
+.hr-sect {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 12px;
+	margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 16px;
+}
+.got{
+  margin-left: 900px;
+  margin-top:-60px;
+  color: #ffffff ;
+}
 
 .align1{
-  margin-top: -10px;
-  margin-right: 880px;
-  font-family: Gotham\ 4r,Verdana;
+  margin-top: 8px;
+  margin-right: 600px;
+  font-family: sans-serif;
 }
 
 .App-start{
@@ -166,8 +196,8 @@ border: 1px solid #000;
 
 }
 .colors{
-  color: black;
-  margin-top: 20px;
+  color: white ;
+
 }
 
 @keyframes App-logo-spin {

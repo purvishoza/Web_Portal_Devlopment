@@ -1,16 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react';
 import 'antd/dist/antd.css';
-import { Table } from 'antd';
-import { Modal,Button } from 'antd';
+import { Table , Icon} from 'antd';
+import { Button } from 'antd';
 import AddUser from '../Users/AddUsers';
-import {Input} from 'antd';
-const { TextArea } = Input;
+import { Menu, Dropdown } from 'antd';
+
+const menu = (
+  <Menu selectable>
+    <Menu.Item key="0">
+      <a >Admin</a>
+    </Menu.Item>
+    <Menu.Item key="1">
+      <a >Developer</a>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item key="3">Product</Menu.Item>
+  </Menu>
+);
 
 const columns = [{
   title: 'NUID',
   dataIndex: 'id',
-   render: text => <a href="#">{text}</a>
+   render: text => <a>{text}</a>
 }, {
   title: 'Name',
   dataIndex: 'name',
@@ -19,16 +30,19 @@ const columns = [{
   dataIndex: 'email',
 },
 {
-  title: 'Date Added',
+  title: 'Address',
   dataIndex: 'date',
 },
 {
   title: 'Action',
   dataIndex: 'action',
+render: text =>  <Dropdown overlay={menu} trigger={['click']}><span><a href="javascript:;" className="ant-dropdown-link">
+        Roles <Icon type="down" />
+      </a></span></Dropdown>
 }
 ];
 
-class TableData extends React.Component {
+class TableData extends Component {
   state = {
     data : [{
       id: '1',
@@ -85,24 +99,24 @@ class TableData extends React.Component {
     })
   }
 
-//  selectRow = (record) => {
-  //   const selectedRowKeys = [...this.state.selectedRowKeys];
-  //   if (selectedRowKeys.indexOf(record.key) >= 0) {
-  //     selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
-  //   } else {
-  //     selectedRowKeys.push(record.key);
-  //   }
-  //   this.setState({ selectedRowKeys });
-  // }
-  // onSelectedRowKeysChange = (selectedRowKeys) => {
-  //   this.setState({ selectedRowKeys });
-  // }
+  selectRow = (record) => {
+     const selectedRowKeys = [...this.state.selectedRowKeys];
+     if (selectedRowKeys.indexOf(record.key) >= 0) {
+       selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
+     } else {
+       selectedRowKeys.push(record.key);
+     }
+     this.setState({ selectedRowKeys });
+   }
+   onSelectedRowKeysChange = (selectedRowKeys) => {
+     this.setState({ selectedRowKeys });
+   }
   render() {
-  {/*  const { selectedRowKeys } = this.state;
+    const { selectedRowKeys } = this.state;
     const rowSelection = {
       selectedRowKeys,
       onChange: this.onSelectedRowKeysChange,
-    }; */ }
+    };
     return (
 <div>
 <Button type="primary" onClick={this.showModal}>
@@ -110,7 +124,7 @@ class TableData extends React.Component {
 </Button>
 <AddUser visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.addUser} />
       <Table
-    //rowSelection={rowSelection}
+    rowSelection={rowSelection}
         columns={columns}
         dataSource={this.state.data}
         rowKey="uid"

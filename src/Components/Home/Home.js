@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import axios from 'axios';
-import {Link, BrowserRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Home extends Component{
   state = {
@@ -11,7 +11,7 @@ class Home extends Component{
   async componentDidMount()
   {
 
-  await   axios.get('http://100.124.69.3:8080/api/v1/cities').then(res => {
+  await   axios.get('http://100.124.66.66:8080/api/v1/cities').then(res => {
       this.setState({cities:res.data})
       console.log(res)
     });
@@ -33,7 +33,8 @@ class Home extends Component{
 
 
         <div className = 'align'>All Facilities (NCAL)
-        <div className = 'Modal1'>
+<div class="hr-sect">OR</div>
+   <div className = 'Modal1'>
             {postList}
         </div>
       </div>

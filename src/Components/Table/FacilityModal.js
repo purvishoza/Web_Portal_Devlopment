@@ -10,7 +10,7 @@ class FacilityModal extends Component {
 
   async  componentDidMount()
   {
-    await axios.get('http://100.124.69.3:8080/api/v1/cities').then(res => {
+    await axios.get('http://100.124.66.66:8080/api/v1/cities').then(res => {
       this.setState({cities:res.data})
       console.log(res)
     });
