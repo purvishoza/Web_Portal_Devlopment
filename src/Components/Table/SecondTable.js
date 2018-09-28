@@ -20,7 +20,6 @@ const columns = [ {
 ];
 
 
-
 class SecondTable extends Component {
   state = {
     data : [{
@@ -48,16 +47,13 @@ class SecondTable extends Component {
     visible: false,
     city:null
   }
-
-  async componentDidMount()
+  componentDidMount()
   {
-    console.log(this.props)
-    let id = this.props.match.params.city_id
-  await  axios.get('http://100.124.66.66:8080/api/v1/cities/' + id).then(res => {
-      this.setState({city:res.data.name})
-      console.log(res)
+    const id = this.props.match.params.city_id
+    console.log("Test" + id)
+    axios.get('http://100.124.68.138:8080/api/v1/cities/'+id).then(res => {
+      this.setState({city:res.data.name}) // this is a callback function
     });
-  console.log(this.state.city)
   }
 
   showModal = () => {
@@ -70,14 +66,18 @@ class SecondTable extends Component {
     e.preventDefault();
     this.setState({
       visible: false,
+      city:this.state.cit
     });
 
   }
 
   handleCancel = (e) => {
+
     this.setState({
       visible: false,
+
     });
+
   }
 
   addUser = (user) => {
@@ -90,13 +90,14 @@ class SecondTable extends Component {
     })
   }
   render() {
+
     return (
 <div>
 <a className = 'Link' onClick = {this.showModal}>
   Change Facility
 </a>
 <div className = 'align1'>{this.state.city}</div>
-<FacilityModal visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.handleCancel} />
+<FacilityModal visible={this.state.visible} onCancel={this.handleCancel} onSubmit = {this.handleCancel} property = {this.props}/>
       <Table
         columns={columns}
         dataSource={this.state.data}

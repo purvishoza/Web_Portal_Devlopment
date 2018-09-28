@@ -126,13 +126,15 @@ line-height: normal;
 }
 
 .align{
-  font-family: sans-serif;
+  font-family: Gotham\ 4r,Verdana;
   color: black;
-  height: 210px;
-  width: 600px;
-  margin-left: 380px;
+  height: 250px;
+  width: 620px;
+  
+  margin-left: 350px;
 margin-top: 30px;
-font-size: 18px;
+font-size: 16px;
+line-height:normal;
 border: 1px solid #000;
 
 }

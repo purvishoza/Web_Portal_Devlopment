@@ -2,17 +2,19 @@ import { Modal} from 'antd';
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
+import SecondTable from './SecondTable';
 class FacilityModal extends Component {
   state = {
-    cities:[]
+    cities:[],
   }
 
-  async  componentDidMount()
+async  componentDidMount()
   {
-    await axios.get('http://100.124.66.66:8080/api/v1/cities').then(res => {
+    console.log(this.props.property)
+    console.log(this.props.cityname)
+    await axios.get('http://100.124.68.138:8080/api/v1/cities/').then(res => {
       this.setState({cities:res.data})
-      console.log(res)
+      console.log(res.data)
     });
     console.log(this.state.cities)
   }
@@ -33,28 +35,29 @@ class FacilityModal extends Component {
   }
 
   render() {
+
        let posts = (
+
          <div >All Facilities (NCAL)
                <div className = 'Modal'>
                    {this.state.cities.map(city =>
-                       {
-                         return <Link to = '#' key = {city.id}> {city.name} </Link>
-                       })}
+                     <a href={`/${city.id}`}> {city.name} </a>
+                          // <Link to = {'/'+city.id} key = {city.id} onClick = {this.props.onCancel}> {city.name} </Link>
+                       )}
                </div>
                </div>
-
           );
 
     return (
-
       <div>
         <Modal
           title="Change Facility"
           visible={this.props.visible}
-          onCancel={this.props.onCancel}
-          onOk = {this.props.onSubmit}
+           onCancel={this.props.onCancel}
+          footer={null}
         >
         <div>{posts}</div>
+
         </Modal>
       </div>
     );
