@@ -82,7 +82,7 @@ class TableData extends Component {
       dataIndex: 'email',
     },
     {
-      title: 'Address',
+      title: 'Date Added',
       dataIndex: 'date',
     },
     {
@@ -99,6 +99,7 @@ class TableData extends Component {
     }
   ],
     selectedRowKeys: [],
+    loading: false,
     visible: false,
     roles:[]
   }
@@ -107,8 +108,9 @@ class TableData extends Component {
   componentDidMount(){
 
     axios.all([
-    axios.get('https://evening-sea-55464.herokuapp.com/api/v1/users'),
-    axios.get('https://evening-sea-55464.herokuapp.com/api/v1/roles')
+    axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/users'),
+    axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/roles')
+
   ])
   .then(axios.spread((usersRes, rolesRes) => {
     this.setState({data:usersRes.data});
@@ -163,15 +165,67 @@ class TableData extends Component {
      this.setState({ selectedRowKeys });
    }
 
+   start = () => {
+       this.setState({ loading: true });
+       // ajax request after empty completing
+       setTimeout(() => {
+         this.setState({
+           selectedRowKeys: [],
+           loading: false,
+         });
+       }, 1000);
+     }
+     onSelectChange = (selectedRowKeys) => {
+    console.log('selectedRowKeys changed: ', selectedRowKeys);
+    this.setState({ selectedRowKeys });
+  }
+
   render() {
 
-    const { selectedRowKeys } = this.state;
+    const { loading,selectedRowKeys } = this.state;
     const rowSelection = {
       selectedRowKeys,
-      onChange: this.onSelectedRowKeysChange,
+      onChange: this.onSelectChange,
+      hideDefaultSelections: true,
+      selections: [{
+        key: 'all-data',
+        text: 'All',
+        onSelect: () => {
+          this.setState({
+            selectedRowKeys: [...Array(46).keys()], // 0...45
+          });
+        },
+      },
+      {
+        key: 'None',
+        text: 'Even',
+        onSelect: (changableRowKeys) => {
+          let newSelectedRowKeys = [];
+          newSelectedRowKeys = changableRowKeys.filter((key, index) => {
+            if (index % 2 !== 0) {
+              return true;
+            }
+            return false;
+          });
+          this.setState({ selectedRowKeys: newSelectedRowKeys });
+        },
+      }],
+      onSelection: this.onSelection,
     };
+     const hasSelected = selectedRowKeys.length > 0;
     return (
+
 <div>
+<Button
+            type="primary"
+            onClick={this.start}
+            disabled={!hasSelected}
+            loading={loading}
+          >
+            Deactivate
+          </Button><span style={{ marginLeft: 8 }}>
+            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+          </span>
 <Button type="primary" onClick={this.showModal}>
   Add user
 </Button>

@@ -11,7 +11,7 @@ class Home extends Component{
 
   componentDidMount()
   {
-  axios.get('https://evening-sea-55464.herokuapp.com/api/v1/cities').then(res => {
+  axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/cities').then(res => {
       this.setState({cities:res.data})
       console.log("Viral" + JSON.stringify(res))
     });

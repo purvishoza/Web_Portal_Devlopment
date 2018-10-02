@@ -32,7 +32,7 @@ class AddUsers extends Component {
    }
 
    componentDidMount(){
-     axios.get('https://evening-sea-55464.herokuapp.com/api/v1/roles').then(res => {
+     axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/roles').then(res => {
        this.setState({roles:res.data});
        console.log(this.state.roles)
      })}
@@ -73,7 +73,7 @@ class AddUsers extends Component {
                      return <option value={obj.id}>{obj.role}</option>
                  })
               }</select>
-          
+
         </Modal>
       </div>
     );
