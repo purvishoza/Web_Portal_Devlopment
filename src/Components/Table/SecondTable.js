@@ -51,7 +51,7 @@ class SecondTable extends Component {
   {
     const id = this.props.match.params.city_id
     console.log("Test" + id)
-    axios.get('http://100.124.68.138:8080/api/v1/cities/'+id).then(res => {
+    axios.get('https://evening-sea-55464.herokuapp.com/api/v1/cities/'+id).then(res => {
       this.setState({city:res.data.name}) // this is a callback function
     });
   }

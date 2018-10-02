@@ -12,7 +12,7 @@ async  componentDidMount()
   {
     console.log(this.props.property)
     console.log(this.props.cityname)
-    await axios.get('http://100.124.68.138:8080/api/v1/cities/').then(res => {
+    await axios.get('https://evening-sea-55464.herokuapp.com/api/v1/cities').then(res => {
       this.setState({cities:res.data})
       console.log(res.data)
     });
@@ -37,7 +37,6 @@ async  componentDidMount()
   render() {
 
        let posts = (
-
          <div >All Facilities (NCAL)
                <div className = 'Modal'>
                    {this.state.cities.map(city =>
@@ -64,6 +63,4 @@ async  componentDidMount()
   }
 }
 
-
-
-export default FacilityModal;
+export default FacilityModal
