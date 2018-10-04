@@ -29,10 +29,10 @@ const header = () => {
     </Navbar.Header>
     <p className='align1'>TPMG Insights</p>
     <Nav className = 'got'>
-      <NavItem eventKey={1} >
+      <NavItem eventKey={1} componentClass='span' >
         <Link to = '/' className='colors'>Home</Link>
       </NavItem>
-      <NavItem eventKey={2} >
+      <NavItem eventKey={2} componentClass='span' >
       <Link to = '/users' className='colors'>Users</Link>
       </NavItem>
     </Nav>

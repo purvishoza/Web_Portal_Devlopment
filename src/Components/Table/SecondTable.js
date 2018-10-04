@@ -51,7 +51,7 @@ class SecondTable extends Component {
   {
     const id = this.props.match.params.city_id
     console.log("Test" + id)
-    axios.get('https://evening-sea-55464.herokuapp.com/api/v1/cities/'+id).then(res => {
+    axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/cities/'+id).then(res => {
       this.setState({city:res.data.name}) // this is a callback function
     });
   }
@@ -101,7 +101,7 @@ class SecondTable extends Component {
       <Table
         columns={columns}
         dataSource={this.state.data}
-      rowKey={this.props.match.params.city_id}
+      key={Math.random()}
       />
       </div>
     );

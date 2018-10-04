@@ -1,18 +1,17 @@
 import { Modal} from 'antd';
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import SecondTable from './SecondTable';
+
 class FacilityModal extends Component {
   state = {
     cities:[],
   }
 
-async  componentDidMount()
+  componentDidMount()
   {
     console.log(this.props.property)
     console.log(this.props.cityname)
-    await axios.get('https://evening-sea-55464.herokuapp.com/api/v1/cities').then(res => {
+     axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/cities').then(res => {
       this.setState({cities:res.data})
       console.log(res.data)
     });
@@ -40,7 +39,7 @@ async  componentDidMount()
          <div >All Facilities (NCAL)
                <div className = 'Modal'>
                    {this.state.cities.map(city =>
-                     <a href={`/${city.id}`}> {city.name} </a>
+                     <a href={`/${city.id}`} key={city.id}> {city.name} </a>
                           // <Link to = {'/'+city.id} key = {city.id} onClick = {this.props.onCancel}> {city.name} </Link>
                        )}
                </div>

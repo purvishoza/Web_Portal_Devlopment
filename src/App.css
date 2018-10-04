@@ -9,6 +9,12 @@ text-align: center;
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+.navbar-nav span {
+  padding: 15px;
+  display: inline-block;
+  line-height: 20px;
+}
+
 
 .App-header {
   background-color: #006BA6;
@@ -128,13 +134,15 @@ line-height: normal;
 .align{
   font-family: Gotham\ 4r,Verdana;
   color: black;
-  height: 250px;
-  width: 620px;
-  
+  height: 210px;
+  padding: 10px;
+  color: #006ba6;
+  width: 610px;
   margin-left: 350px;
 margin-top: 30px;
-font-size: 16px;
-line-height:normal;
+text-align: justify;
+line-height:14px;
+font-size: 1em;
 border: 1px solid #000;
 
 }

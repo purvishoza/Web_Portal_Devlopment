@@ -13,7 +13,7 @@ class Home extends Component{
   {
   axios.get('https://floating-wildwood-49980.herokuapp.com/api/v1/cities').then(res => {
       this.setState({cities:res.data})
-      console.log("Viral" + JSON.stringify(res))
+      console.log("Oza" + JSON.stringify(res))
     });
   console.log(this.state.cities)
   }
@@ -22,20 +22,17 @@ class Home extends Component{
 
     let postList = this.state.cities.map(city =>
     {
-      return (
+      return(
           <div key = {city.id}>
           <p>
-        <Link to = {'/'+city.id}>{city.name}</Link></p>
-        </div>
-      )
+          <Link to = {'/'+city.id}>{city.name}</Link></p>
+          </div>
+          )
     })
-
-
     return(
-
         <div className = 'align'>All Facilities (NCAL)
 <div className="hr-sect">OR</div>
-   <div className = 'Modal1'>
+   <div className = 'Modal'>
             {postList}
         </div>
 <FacilityModal cityname = {this.props} />
